@@ -2,8 +2,8 @@
 Bypass for PowerShell Constrained Language Mode
 
 ## Description and references 
-This technique might come in handy wherever or whenever you're stuck in a low privilege PowerShell console 
-and PowerShell Version 2 engine is not available to perform a [PowerShell Downgrade Attacks].(http://www.leeholmes.com/blog/2017/03/17/detecting-and-preventing-powershell-downgrade-attacks/)
+This technique might come in handy wherever or whenever you're stuck in a low privilege PS console 
+and PowerShell Version 2 engine is not available to perform a [PowerShell Downgrade Attacks](http://www.leeholmes.com/blog/2017/03/17/detecting-and-preventing-powershell-downgrade-attacks/).
 
 What described above may happen in [modern] Windows OSes, like Windows 10, that nowdays are shipped out with AppLocker 
 and PowerShell Version 5 (v5).  
