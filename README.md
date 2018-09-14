@@ -22,7 +22,7 @@ The project is written in C#. All the source (few lines of codes though) is comm
 You should be able to easily compile and build the binary with the default configuration Debug/X64.
 
 ## Usage
-Well, nothing new here as we're going to use the old and well-known trick of "InstallUtil.exe" to bypass execution of exe.
+Well, nothing new here as we're going to use the old and well-known trick of "InstallUtil.exe" to bypass AppLocker.
 Once you've compiled the binary, issue the below command on the target host.  
 Besides, your binary doesn't have to be an "exe" as InstallUtil.exe parse any file type (.txt, .bin....)
 
