@@ -31,5 +31,5 @@ C:\Windows\Microsoft.NET\Framework64\v4.0.30319\InstallUtil.exe /logfile= /LogTo
 
 
 ## Author
-This code is developed by Chris D. (@padovah4ck)[twitter](https://twitter.com/padovah4ck)  
+This code is developed by Chris D. [@padovah4ck](https://twitter.com/padovah4ck) // [LinkedIn](https://www.linkedin.com/in/chrisdanieli/) //   
 Use it at your own risk. No responsability on my side
