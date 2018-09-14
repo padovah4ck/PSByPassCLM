@@ -37,15 +37,15 @@ C:\Windows\Microsoft.NET\Framework64\v4.0.30319\InstallUtil.exe /logfile= /LogTo
 ```
 
 ## Testing
-
+Tested on the following enviroment  (Windows Server 2016)
 ![Screenshot](img/clm01.JPG?raw=true)
 
 ![Screenshot](img/clm02.JPG?raw=true)
 
-PS in process in current console
+PS process in current console
 ![Screenshot](img/clm03.JPG?raw=true)
 
-Teying to open PS reverse shell
+Trying to open PS reverse shell
 ![Screenshot](img/clm04.JPG?raw=true)
 
 Got the shell
@@ -53,11 +53,11 @@ Got the shell
 
 
 ## Useful Links
-https://blogs.msdn.microsoft.com/powershell/2017/11/02/powershell-constrained-language-mode/
-https://adsecurity.org/?p=2604
-https://pentestn00b.wordpress.com/2017/03/20/simple-bypass-for-powershell-constrained-language-mode/
-https://blog.stealthbits.com/how-attackers-are-bypassing-powershell-protections/
-https://decoder.cloud/2017/11/17/we-dont-need-powershell-exe-part-3/
+https://blogs.msdn.microsoft.com/powershell/2017/11/02/powershell-constrained-language-mode/  
+https://adsecurity.org/?p=2604  
+https://pentestn00b.wordpress.com/2017/03/20/simple-bypass-for-powershell-constrained-language-mode/  
+https://blog.stealthbits.com/how-attackers-are-bypassing-powershell-protections/  
+https://decoder.cloud/2017/11/17/we-dont-need-powershell-exe-part-3/  
 
 
 ## Author
