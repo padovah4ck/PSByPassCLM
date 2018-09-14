@@ -37,7 +37,7 @@ C:\Windows\Microsoft.NET\Framework64\v4.0.30319\InstallUtil.exe /logfile= /LogTo
 ```
 
 ## Testing
-Tested on the following enviroment  (Windows Server 2016)
+Tested on the following environment  (Windows Server 2016)
 ![Screenshot](img/clm01.JPG?raw=true)
 
 ![Screenshot](img/clm02.JPG?raw=true)
