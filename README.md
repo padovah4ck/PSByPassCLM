@@ -20,7 +20,10 @@ to change the PowerShell language mode to full in order to run attack tools." [[
 ## Build the binary
 The project is written in C#. All the source (few lines of codes though) is committed: .csproj, .sln ...  
 IDE - Visual Studio 2015. You should be able to easily compile and build the binary with the default configuration Debug/X64.
-You only may to fix the System.Management.Automation reference that is located in the GAC folder  C:\Windows\Microsoft.NET\assembly\GAC_MSIL\System.Management.Automation\v4.0_3.0.0.0__31bf3856ad364e35\System.Management.Automation.dll
+You only may to fix the System.Management.Automation reference that is located in the GAC folder 
+```dos
+C:\Windows\Microsoft.NET\assembly\GAC_MSIL\System.Management.Automation\v4.0_3.0.0.0__31bf3856ad364e35\System.Management.Automation.dll
+```
 
 ## Usage
 Well, nothing new here as we're going to use the old and well-known trick of "InstallUtil.exe" to bypass AppLocker.
