@@ -67,3 +67,8 @@ https://decoder.cloud/2017/11/17/we-dont-need-powershell-exe-part-3/
 ## Author
 This code is developed by Chris D. [@padovah4ck](https://twitter.com/padovah4ck) // [LinkedIn](https://www.linkedin.com/in/chrisdanieli/) //   
 Use it at your own risk. No responsability on my side
+
+
+---
+
+![Beer](https://icons.iconarchive.com/icons/flat-icons.com/flat/48/Beer-icon.png)  [Buy me a beer if you like ;-)](https://www.buymeacoffee.com/padovah4ck)
